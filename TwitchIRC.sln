@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchIRC", "I:\TwitchIRC\TwitchIRC\TwitchIRC.csproj", "{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchIRC.Tests", "I:\TwitchIRC\TwitchIRC.Tests\TwitchIRC.Tests.csproj", "{B95E2160-676C-45BD-A3FC-3FD63B2194B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6FE73CE-CC52-4C13-A887-4759FDDEFA44}
+	EndGlobalSection
+EndGlobal

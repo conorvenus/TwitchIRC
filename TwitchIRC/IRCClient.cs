@@ -1,4 +1,6 @@
-﻿using TwitchIRC.Options;
+﻿using System.Security.Cryptography.X509Certificates;
+using TwitchIRC.Options;
+using TwitchIRC.Types;
 
 namespace TwitchIRC;
 
@@ -32,8 +34,21 @@ public class IRCClient : IRCEventHandler
 	{
 		while (true)
 		{
-			string message = _networkWrapper.Receive();
-			HandleMessage(message);
+			string rawMessage = _networkWrapper.Receive();
+			IRCMessage message = IRCMessageParser.ParseMessage(rawMessage);
+
+			switch (message.Command.ToUpper()) {
+				case "PING":
+					Send("PONG");
+					break;
+				case "PRIVMSG":
+					string username = message.Prefix.Split('!')[0];
+					string content = message.Parameters.Last();
+					HandleChatMessage(new IRCChatMessage(username, content));
+					break;
+			};
+
+			HandleMessage(message, rawMessage);
 		}
 	}
 }

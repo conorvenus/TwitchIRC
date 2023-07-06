@@ -8,17 +8,20 @@ internal class IRCNetworkWrapper
 {
 	private TcpClient _tcpClient;
 	private StreamReader _reader;
-	private StreamWriter _writer;
+	private NetworkStream _stream;
 
 	public IRCNetworkWrapper(IRCHostOptions hostOptions)
 	{
 		_tcpClient = new TcpClient(hostOptions.HostName, hostOptions.HostPort);
-		var networkStream = _tcpClient.GetStream();
-		_reader = new StreamReader(networkStream, Encoding.ASCII);
-		_writer = new StreamWriter(networkStream, Encoding.ASCII) { AutoFlush = true };
+		_stream = _tcpClient.GetStream();
+		_reader = new StreamReader(_stream, Encoding.UTF8);
 	}
 
-	public void Send(string message) => _writer.WriteLine(message);
+	public void Send(string message) 
+	{
+		byte[] bytes = Encoding.UTF8.GetBytes(message + "\r\n");
+		_stream.Write(bytes, 0, bytes.Length);
+	}
 
 	public string Receive() => _reader.ReadLine() ?? string.Empty;
 }

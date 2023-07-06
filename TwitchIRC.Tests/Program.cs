@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 using TwitchIRC;
+using TwitchIRC.Types;
 
 IConfiguration configuration = new ConfigurationBuilder()
 	.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -11,15 +13,15 @@ IRCClient ircClient = new IRCClientBuilder()
 	.Build();
 
 ircClient.OnReady += OnReady;
-ircClient.OnMessage += OnMessage;
+ircClient.OnChatMessage += OnChatMessage;
 ircClient.Run();
 
 void OnReady()
 {
-	ircClient.Send("JOIN #ldsylvr");
+	ircClient.Send("JOIN #boxyfresh");
 }
 
-void OnMessage(string message)
+void OnChatMessage(IRCChatMessage message)
 {
-	Console.WriteLine(message);
+	Console.WriteLine($"{message.Username}: {message.Content}");
 }

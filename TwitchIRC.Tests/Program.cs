@@ -1,6 +1,15 @@
-﻿using TwitchIRC;
+﻿using Microsoft.Extensions.Configuration;
+using TwitchIRC;
 
-IRCClient ircClient = new IRCClientBuilder().Build();
+IConfiguration configuration = new ConfigurationBuilder()
+	.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+	.Build();
+
+IRCClient ircClient = new IRCClientBuilder()
+	.WithAccessToken(configuration["AccessToken"] ?? string.Empty)
+	.WithUsername("conor_v")
+	.Build();
+
 ircClient.OnMessage += OnMessage;
 ircClient.Run();
 

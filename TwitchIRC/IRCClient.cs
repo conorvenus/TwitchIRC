@@ -1,14 +1,18 @@
-﻿namespace TwitchIRC;
+﻿using TwitchIRC.Options;
+
+namespace TwitchIRC;
 
 public class IRCClient
 {
 	private readonly IRCNetworkWrapper _networkWrapper;
+	private readonly IRCAuthOptions _authOptions;
 
 	public event EventHandler<string>? OnMessage;
 
-	public IRCClient(IRCHost ircHost)
+	internal IRCClient(IRCHostOptions hostOptions, IRCAuthOptions authOptions)
 	{
-		_networkWrapper = new IRCNetworkWrapper(ircHost.HostName, ircHost.HostPort);
+		_networkWrapper = new IRCNetworkWrapper(hostOptions);
+		_authOptions = authOptions;
 	}
 
 	public void Run()
@@ -19,8 +23,8 @@ public class IRCClient
 
 	private void Authenticate()
 	{
-		_networkWrapper.Send("PASS oauth:xxx");
-		_networkWrapper.Send("NICK xxx");
+		_networkWrapper.Send($"PASS {_authOptions.AccessToken}");
+		_networkWrapper.Send($"NICK {_authOptions.Username}");
 	}
 
 	private void StartReceiving()

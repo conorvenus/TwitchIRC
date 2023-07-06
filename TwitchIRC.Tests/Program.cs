@@ -10,10 +10,16 @@ IRCClient ircClient = new IRCClientBuilder()
 	.WithUsername("conor_v")
 	.Build();
 
+ircClient.OnReady += OnReady;
 ircClient.OnMessage += OnMessage;
 ircClient.Run();
 
-void OnMessage(object? sender, string e)
+void OnReady()
 {
-	Console.WriteLine(e);
+	ircClient.Send("JOIN #ldsylvr");
+}
+
+void OnMessage(string message)
+{
+	Console.WriteLine(message);
 }

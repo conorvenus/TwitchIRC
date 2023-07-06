@@ -2,12 +2,10 @@
 
 namespace TwitchIRC;
 
-public class IRCClient
+public class IRCClient : IRCEventHandler
 {
 	private readonly IRCNetworkWrapper _networkWrapper;
 	private readonly IRCAuthOptions _authOptions;
-
-	public event EventHandler<string>? OnMessage;
 
 	internal IRCClient(IRCHostOptions hostOptions, IRCAuthOptions authOptions)
 	{
@@ -18,8 +16,11 @@ public class IRCClient
 	public void Run()
 	{
 		Authenticate();
+		HandleReady();
 		StartReceiving();
 	}
+
+	public void Send(string message) => _networkWrapper.Send(message);
 
 	private void Authenticate()
 	{
@@ -32,7 +33,7 @@ public class IRCClient
 		while (true)
 		{
 			string message = _networkWrapper.Receive();
-			OnMessage?.Invoke(this, message);
+			HandleMessage(message);
 		}
 	}
 }

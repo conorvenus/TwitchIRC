@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using TwitchIRC.Options;
+﻿using TwitchIRC.Options;
 using TwitchIRC.Types;
 
 namespace TwitchIRC;
@@ -12,7 +11,7 @@ public class IRCClient : IRCEventHandler
 	internal IRCClient(IRCHostOptions hostOptions, IRCAuthOptions authOptions)
 	{
 		_networkWrapper = new IRCNetworkWrapper(hostOptions);
-		_authOptions = authOptions;
+		_authOptions = authOptions;	
 	}
 
 	public void Run()
@@ -43,8 +42,9 @@ public class IRCClient : IRCEventHandler
 					break;
 				case "PRIVMSG":
 					string username = message.Prefix.Split('!')[0];
+					string channel = message.Parameters.First().Substring(1);
 					string content = message.Parameters.Last();
-					HandleChatMessage(new IRCChatMessage(username, content));
+					HandleChatMessage(new IRCChatMessage(username, channel, content));
 					break;
 			};
 

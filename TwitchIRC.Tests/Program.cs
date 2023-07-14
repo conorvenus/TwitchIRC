@@ -1,27 +1,25 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System.Diagnostics;
 using TwitchIRC;
-using TwitchIRC.Types;
+using TwitchIRC.Commands;
 
 IConfiguration configuration = new ConfigurationBuilder()
-	.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-	.Build();
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .Build();
 
-IRCClient ircClient = new IRCClientBuilder()
+IRCClient client = new IRCClientBuilder()
 	.WithAccessToken(configuration["AccessToken"] ?? string.Empty)
 	.WithUsername("conor_v")
 	.Build();
 
-ircClient.OnReady += OnReady;
-ircClient.OnChatMessage += OnChatMessage;
-ircClient.Run();
+IRCCommandHandler commandHandler = new IRCCommandHandler(client)
+	.WithPrefix("?")
+	.Register();
+
+client.OnReady += OnReady;
+client.Run();
 
 void OnReady()
 {
-	ircClient.Send("JOIN #boxyfresh");
-}
-
-void OnChatMessage(IRCChatMessage message)
-{
-	Console.WriteLine($"{message.Username}: {message.Content}");
+	client.Send("CAP REQ :twitch.tv/membership");
+	client.Send("JOIN #conor_v");
 }

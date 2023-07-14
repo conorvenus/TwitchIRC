@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchIRC", "I:\TwitchIRC\TwitchIRC\TwitchIRC.csproj", "{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Core", "TwitchIRC\TwitchIRC.Core.csproj", "{959C7F2E-408D-4D3B-97F5-BF32EA0FB935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchIRC.Tests", "I:\TwitchIRC\TwitchIRC.Tests\TwitchIRC.Tests.csproj", "{B95E2160-676C-45BD-A3FC-3FD63B2194B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Tests", "TwitchIRC.Tests\TwitchIRC.Tests.csproj", "{B95E2160-676C-45BD-A3FC-3FD63B2194B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchIRC.Commands", "TwitchIRC.Commands\TwitchIRC.Commands.csproj", "{9A070E4E-B719-496E-95B7-39DA907DD51A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using TwitchIRC;
 using TwitchIRC.Commands;
+using TwitchIRC.Types;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -15,11 +16,7 @@ IRCCommandHandler commandHandler = new IRCCommandHandler(client)
 	.WithPrefix("?")
 	.Register();
 
-client.OnReady += OnReady;
+client.OnReady += () => client.Send("JOIN #reydempto");
+client.OnUserJoin += (string user, string channel) => Console.WriteLine($"{user} joined {channel}!");
+client.OnUserPart += (string user, string channel) => Console.WriteLine($"{user} parted {channel}!");
 client.Run();
-
-void OnReady()
-{
-	client.Send("CAP REQ :twitch.tv/membership");
-	client.Send("JOIN #conor_v");
-}

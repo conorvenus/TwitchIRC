@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TwitchIRC\TwitchIRC.Core.csproj" />
+    <ProjectReference Include="..\TwitchIRC.Core\TwitchIRC.Core.csproj" />
   </ItemGroup>
 
 </Project>

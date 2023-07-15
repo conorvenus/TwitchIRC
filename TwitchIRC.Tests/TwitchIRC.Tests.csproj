@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TwitchIRC.Commands\TwitchIRC.Commands.csproj" />
-    <ProjectReference Include="..\TwitchIRC\TwitchIRC.Core.csproj" />
+    <ProjectReference Include="..\TwitchIRC.Core\TwitchIRC.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

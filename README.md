@@ -39,6 +39,6 @@ client.Run();
 - [ ] Handle socket disconnects, reconnect requests, etc.
 - [ ] Receive Twitch-specific commands and other IRC capabilities.
 - [ ] Support the Twitch IRC tags for extra metadata, such as badges, emotes, etc.
-- [ ] Implement additional events for `OnUserJoin` and `OnUserPart` of a given channel.
+- [x] Implement additional events for `OnUserJoin` and `OnUserPart` of a given channel.
 - [ ] Add custom types for users, channels, etc, rather than just using a `string`.
 - [ ] Extend the IRC client for use with other parts of the Twitch API, to send whispers, handle alerts, etc.

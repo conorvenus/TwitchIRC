@@ -35,10 +35,10 @@ client.Run();
 - Implemented a declarative command framework using reflection.
 
 ## TODO
-- [ ] Incorporate proper unit testing using xUnit, NUnit or similar.
+- [x] Incorporated proper unit testing using xUnit and FluentAssertions.
 - [ ] Handle socket disconnects, reconnect requests, etc.
 - [ ] Receive Twitch-specific commands and other IRC capabilities.
 - [ ] Support the Twitch IRC tags for extra metadata, such as badges, emotes, etc.
-- [x] Implement additional events for `OnUserJoin` and `OnUserPart` of a given channel.
+- [x] Implemented additional events for `OnUserJoin` and `OnUserPart` of a given channel.
 - [ ] Add custom types for users, channels, etc, rather than just using a `string`.
 - [ ] Extend the IRC client for use with other parts of the Twitch API, to send whispers, handle alerts, etc.

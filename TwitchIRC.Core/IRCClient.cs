@@ -1,26 +1,31 @@
-﻿using TwitchIRC.Options;
+﻿using TwitchIRC.Core;
+using TwitchIRC.Options;
 using TwitchIRC.Types;
 
 namespace TwitchIRC;
 
 public class IRCClient : IRCEventHandler
 {
-	private readonly IRCNetworkWrapper _networkWrapper;
+	private readonly IIRCNetworkWrapper _networkWrapper;
 	private readonly IRCAuthOptions _authOptions;
+	private bool _shouldRun = true;
 
-	internal IRCClient(IRCHostOptions hostOptions, IRCAuthOptions authOptions)
+	internal IRCClient(IRCAuthOptions authOptions, IIRCNetworkWrapper networkWrapper)
 	{
-		_networkWrapper = new IRCNetworkWrapper(hostOptions);
+		_networkWrapper = networkWrapper;
 		_authOptions = authOptions;	
 	}
 
 	public void Run()
 	{
+		_shouldRun = true;
 		Authenticate();
 		HandleReady();
         _networkWrapper.Send("CAP REQ :twitch.tv/membership");
         StartReceiving();
 	}
+
+	public void Stop() => _shouldRun = false;
 
 	public void Send(string message) => _networkWrapper.Send(message);
 
@@ -32,7 +37,7 @@ public class IRCClient : IRCEventHandler
 
 	private void StartReceiving()
 	{
-		while (true)
+		while (_shouldRun)
 		{
 			string rawMessage = _networkWrapper.Receive();
 			IRCMessage message = IRCMessageParser.ParseMessage(rawMessage);

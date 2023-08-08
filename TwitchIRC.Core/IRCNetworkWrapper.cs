@@ -1,10 +1,11 @@
 ﻿using System.Net.Sockets;
 using System.Text;
+using TwitchIRC.Core;
 using TwitchIRC.Options;
 
 namespace TwitchIRC;
 
-internal class IRCNetworkWrapper
+internal class IRCNetworkWrapper : IIRCNetworkWrapper
 {
 	private TcpClient _tcpClient;
 	private StreamReader _reader;

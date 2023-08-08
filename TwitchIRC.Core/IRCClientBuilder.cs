@@ -2,7 +2,7 @@
 
 namespace TwitchIRC;
 
-public class IRCClientBuilder
+public class IRCClientBuilder 
 {
 	private readonly IRCHostOptions _host = new IRCHostOptions("irc.chat.twitch.tv", 6667);
 	private readonly IRCAuthOptions _auth = new IRCAuthOptions();
@@ -31,5 +31,5 @@ public class IRCClientBuilder
 		return this;
 	}
 
-	public IRCClient Build() => new IRCClient(_host, _auth);
+	public IRCClient Build() => new IRCClient(_auth, new IRCNetworkWrapper(_host));
 }

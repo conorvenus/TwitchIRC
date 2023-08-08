@@ -11,8 +11,7 @@ IRCClient client = new IRCClientBuilder()
 	.WithUsername("conor_v")
 	.Build();
 
-IRCCommandHandler commandHandler = new IRCCommandHandler(client)
-	.WithPrefix("?")
+IRCCommandHandler commandHandler = new IRCCommandHandler(client, "?")
 	.Register();
 
 client.OnReady += () => client.Send("JOIN #reydempto");

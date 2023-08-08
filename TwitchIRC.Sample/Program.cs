@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using TwitchIRC;
 using TwitchIRC.Commands;
-using TwitchIRC.Types;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)

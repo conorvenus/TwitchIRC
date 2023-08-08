@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Tests", "TwitchIRC.Tests\TwitchIRC.Tests.csproj", "{B95E2160-676C-45BD-A3FC-3FD63B2194B6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Commands", "TwitchIRC.Commands\TwitchIRC.Commands.csproj", "{9A070E4E-B719-496E-95B7-39DA907DD51A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Core", "TwitchIRC.Core\TwitchIRC.Core.csproj", "{48995F76-1E8A-48C6-B229-14617FEEAFBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Testing", "TwitchIRC.Testing\TwitchIRC.Testing.csproj", "{707CFB69-2A0E-4DE6-ABE1-25B8F4E4E3DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwitchIRC.Sample", "TwitchIRC.Sample\TwitchIRC.Sample.csproj", "{8558CC47-4AF2-4577-91A4-51F4F8B7557B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B95E2160-676C-45BD-A3FC-3FD63B2194B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A070E4E-B719-496E-95B7-39DA907DD51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +25,14 @@ Global
 		{48995F76-1E8A-48C6-B229-14617FEEAFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48995F76-1E8A-48C6-B229-14617FEEAFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48995F76-1E8A-48C6-B229-14617FEEAFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707CFB69-2A0E-4DE6-ABE1-25B8F4E4E3DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707CFB69-2A0E-4DE6-ABE1-25B8F4E4E3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707CFB69-2A0E-4DE6-ABE1-25B8F4E4E3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707CFB69-2A0E-4DE6-ABE1-25B8F4E4E3DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8558CC47-4AF2-4577-91A4-51F4F8B7557B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8558CC47-4AF2-4577-91A4-51F4F8B7557B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8558CC47-4AF2-4577-91A4-51F4F8B7557B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8558CC47-4AF2-4577-91A4-51F4F8B7557B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

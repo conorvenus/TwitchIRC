@@ -5,4 +5,4 @@ global using TwitchIRC.Commands;
 global using TwitchIRC.Types;
 global using TwitchIRC.Commands;
 global using FluentAssertions;
-global using Moq;
+global using NSubstitute;

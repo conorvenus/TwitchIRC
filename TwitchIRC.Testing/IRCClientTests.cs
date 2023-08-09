@@ -5,42 +5,26 @@ namespace TwitchIRC.Testing
 {
 	public class IRCClientTests
 	{
-		private readonly ITestOutputHelper _output;
+		private readonly IIRCNetworkWrapper _networkWrapper = Substitute.For<IIRCNetworkWrapper>();
+		private IRCClient? _client;
 
-		public IRCClientTests(ITestOutputHelper output)
+		[Theory]
+		[InlineData("AT", "UN", "PASS oauth:AT", "NICK UN")]
+		[InlineData("oauth:AT", "UN", "PASS oauth:AT", "NICK UN")]
+		public void Authenticate_Should_Run_Correctly(string accessToken, string userName, params string[] commands)
 		{
-			_output = output;
-		}
+			int callbackNumber = 0;
+			_client = new IRCClient(new IRCAuthOptions { AccessToken = accessToken, Username = userName }, _networkWrapper);
 
-		[Fact]
-		public void Run_Should_Authenticate_Properly()
-		{
-			var options = new IRCAuthOptions()
-			{
-				AccessToken = "ACCESS_TOKEN",
-				Username = "USERNAME"
-			};
-
-			IRCClient? client = null;
-
-			int callback = 0;
-
-			var mockNetworkWrapper = new Mock<IIRCNetworkWrapper>();
-			mockNetworkWrapper
-				.Setup(m => m.Receive())
-				.Returns(string.Empty);
-			mockNetworkWrapper
-				.Setup(m => m.Send(It.IsAny<string>()))
-				.Callback((string s) =>
+			_networkWrapper
+				.When(x => x.Send(Arg.Any<string>()))
+				.Do(x =>
 				{
-					if (callback == 0) s.Should().Be($"PASS {options.AccessToken}");
-					else if (callback == 1) s.Should().Be($"NICK {options.Username}");
-					else client?.Stop();
-					callback++;
+					if (callbackNumber >= commands.Length) _client.Stop();
+					else x.Arg<string>().Should().Be(commands[callbackNumber++]);
 				});
 
-			client = new IRCClient(options, mockNetworkWrapper.Object);
-			client.Run();
+			_client.Run();
 		}
 	}
 }
